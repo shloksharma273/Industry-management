@@ -13,26 +13,48 @@ Adafruit_MAX31855 thermocouple(THERMOCOUPLE_CLK, THERMOCOUPLE_CS, THERMOCOUPLE_D
 void setup() {
   Serial.begin(9600);
   pinMode(MQ3_DIGITAL_PIN, INPUT);
+  pinMode(13, OUTPUT);
+}
+
+void blinkLED() {
+  // Blink LED
+  digitalWrite(13, HIGH);
+  delay(500); // Wait for 500 milliseconds
+  digitalWrite(13, LOW);
+  delay(500); // Wait for 500 milliseconds
 }
 
 void loop() {
   float temperature = thermocouple.readCelsius();
   if (isnan(temperature)) {
     Serial.println("Error reading thermocouple.");
+  } else if(temperature > 80) {
+    Serial.print("Critical Temperature Exceeded!!!! ");
+    Serial.print(temperature);
+    Serial.println(" °C");
+    blinkLED();
   } else {
-    Serial.print("Thermocouple Temperature: ");
+    Serial.print("Current Temperature: ");
     Serial.print(temperature);
     Serial.println(" °C");
   }
 
-  int alcoholLevel = analogRead(MQ3_ANALOG_PIN);
-  bool presenceOfAlcohol = digitalRead(MQ3_DIGITAL_PIN);
-
-  Serial.print("Alcohol Level (Analog): ");
-  Serial.println(alcoholLevel);
-  
-  Serial.print("Presence of Alcohol (Digital): ");
-  Serial.println(presenceOfAlcohol);
-
+  int ammoniaLevel = analogRead(MQ3_ANALOG_PIN);
+  bool presenceOfAmmonia = digitalRead(MQ3_DIGITAL_PIN);
+  if ( ammoniaLevel> 50){
+    Serial.print(" Critical Ammonia Level Exceeded!!!!");
+    Serial.print("Ammonia Level (Analog): ");
+    Serial.println(ammoniaLevel);
+    
+    Serial.print("Presence of Ammonia (Digital): ");
+    Serial.println(presenceOfAmmonia);
+    blinkLED();
+  }else {
+    Serial.print("Ammonia Level (Analog): ");
+    Serial.println(ammoniaLevel);
+    
+    Serial.print("Presence of Ammonia (Digital): ");
+    Serial.println(presenceOfAmmonia);
+  }
   delay(1000);
 }
