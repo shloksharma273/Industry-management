@@ -9,7 +9,7 @@ import rospy
 cap = cv2.VideoCapture("/home/gauri/test_wk/src/industryManagement/ppe-2-1.mp4")
 bridge = CvBridge()
 rospy.init_node('image_publisher', anonymous=True)
-image_publisher = rospy.Publisher('/your_image_topic', Image, queue_size=10)
+image_publisher = rospy.Publisher('Workers_footage', Image, queue_size=10)
 
 model = YOLO('/home/gauri/test_wk/src/industryManagement/ppe(1)/ppe.pt')
 classNames = ['gloves', 'hardhat', 'no-gloves', 'no-hardhat', 'no-shoes', 'no-vest', 'person', 'shoes', 'vest']
