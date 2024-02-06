@@ -9,11 +9,11 @@ for onePort in ports:
     portsList.append(str(onePort))
     print(str(onePort))
 
-val = input("Select Port: COM")
+portVar = "/dev/ttyUSB0"
 
 for x in range(0,len(portsList)):
-    if portsList[x].startswith("COM" + str(val)):
-        portVar = "COM" + str(val)
+    if portsList[x].startswith("/dev/ttyUSB0" ):
+        portVar = "/dev/ttyUSB0"
         print(portVar)
 
 serialInst.baudrfate = 9600
