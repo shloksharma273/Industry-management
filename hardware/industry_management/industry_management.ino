@@ -29,32 +29,32 @@ void loop() {
   if (isnan(temperature)) {
     Serial.println("Error reading thermocouple.");
   } else if(temperature > 80) {
-    Serial.print("Critical Temperature Exceeded!!!! ");
-    Serial.print(temperature);
-    Serial.println(" °C");
+//    Serial.print("Critical Temperature Exceeded!!!! ");
+    Serial.println(temperature);
+//    Serial.println(" °C");
     blinkLED();
   } else {
-    Serial.print("Current Temperature: ");
-    Serial.print(temperature);
-    Serial.println(" °C");
+//    Serial.print("Current Temperature: ");
+    Serial.println(temperature);
+//    Serial.println(" °C");
   }
 
   int ammoniaLevel = analogRead(MQ3_ANALOG_PIN);
   bool presenceOfAmmonia = digitalRead(MQ3_DIGITAL_PIN);
   if ( ammoniaLevel> 50){
-    Serial.print(" Critical Ammonia Level Exceeded!!!!");
-    Serial.print("Ammonia Level (Analog): ");
+//    Serial.print(" Critical Ammonia Level Exceeded!!!!");
+//    Serial.print("Ammonia Level (Analog): ");
     Serial.println(ammoniaLevel);
     
-    Serial.print("Presence of Ammonia (Digital): ");
-    Serial.println(presenceOfAmmonia);
+//    Serial.print("Presence of Ammonia (Digital): ");
+//    Serial.println(presenceOfAmmonia);
     blinkLED();
   }else {
-    Serial.print("Ammonia Level (Analog): ");
+//    Serial.print("Ammonia Level (Analog): ");
     Serial.println(ammoniaLevel);
     
-    Serial.print("Presence of Ammonia (Digital): ");
-    Serial.println(presenceOfAmmonia);
+//    Serial.print("Presence of Ammonia (Digital): ");
+//    Serial.println(presenceOfAmmonia);
   }
   delay(1000);
 }
