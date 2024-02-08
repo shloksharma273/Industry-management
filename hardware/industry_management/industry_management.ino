@@ -13,15 +13,15 @@ Adafruit_MAX31855 thermocouple(THERMOCOUPLE_CLK, THERMOCOUPLE_CS, THERMOCOUPLE_D
 void setup() {
   Serial.begin(9600);
   pinMode(MQ3_DIGITAL_PIN, INPUT);
-  pinMode(13, OUTPUT);
+  pinMode(11, OUTPUT);
 }
 
 void blinkLED() {
   // Blink LED
-  digitalWrite(13, HIGH);
-  delay(500); // Wait for 500 milliseconds
-  digitalWrite(13, LOW);
-  delay(500); // Wait for 500 milliseconds
+  digitalWrite(11, HIGH);
+  delay(100); // Wait for 500 milliseconds
+  digitalWrite(11, LOW);
+  delay(100); // Wait for 500 milliseconds
 }
 
 void loop() {

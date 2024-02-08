@@ -15,7 +15,9 @@ import { IconButton, Typography } from "@mui/material";
 import { Drawer, Stack, Box } from "@mui/material";
 import "../index.css";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const params = useLocation();
@@ -83,6 +85,7 @@ const Navbar = () => {
         <IconButton
           size="large"
           aria-haspopup="true"
+          onClick={() => navigate("/")}
           color="inherit"
           sx={{
             display: { xs: "flex", lg: "flex" },
@@ -100,18 +103,19 @@ const Navbar = () => {
         <IconButton
           size="large"
           aria-haspopup="true"
+          onClick={() => navigate("/machines")}
           color="inherit"
           sx={{
             display: { xs: "flex", lg: "flex" },
             backgroundColor:
-              params.pathname === "/sessions" ? "#CAA0C3" : "white",
+              params.pathname === "/machines" ? "#CAA0C3" : "white",
           }}
         >
           <LockClock
             height={54}
             width={54}
             sx={{
-              color: params.pathname === "/sessions" ? "white" : "black",
+              color: params.pathname === "/machines" ? "white" : "black",
             }}
           />
         </IconButton>
@@ -119,17 +123,18 @@ const Navbar = () => {
           size="large"
           aria-haspopup="true"
           color="inherit"
+          onClick={() => navigate("/machineData")}
           sx={{
             display: { xs: "flex", lg: "flex" },
             backgroundColor:
-              params.pathname === "/doctors" ? "#CAA0C3" : "white",
+              params.pathname === "/machineData" ? "#CAA0C3" : "white",
           }}
         >
           <LocalHospital
             height={54}
             width={54}
             sx={{
-              color: params.pathname === "/doctors" ? "white" : "black",
+              color: params.pathname === "/machineData" ? "white" : "black",
             }}
           />
         </IconButton>
@@ -137,18 +142,18 @@ const Navbar = () => {
           size="large"
           aria-haspopup="true"
           color="inherit"
-          onClick={() => window.location("/connection")}
+          onClick={() => navigate("/livefeed")}
           sx={{
             display: { xs: "flex", lg: "flex" },
             backgroundColor:
-              params.pathname === "/connection" ? "#CAA0C3" : "white",
+              params.pathname === "/livefeed" ? "#CAA0C3" : "white",
           }}
         >
           <Assignment
             height={54}
             width={54}
             sx={{
-              color: params.pathname === "/connection" ? "white" : "black",
+              color: params.pathname === "/livefeed" ? "white" : "black",
             }}
           />
         </IconButton>
@@ -156,17 +161,18 @@ const Navbar = () => {
           size="large"
           aria-haspopup="true"
           color="inherit"
+          onClick={() => navigate("/workers")}
           sx={{
             display: { xs: "flex", lg: "flex" },
             backgroundColor:
-              params.pathname === "/profile" ? "#CAA0C3" : "white",
+              params.pathname === "/workers" ? "#CAA0C3" : "white",
           }}
         >
           <Person
             height={54}
             width={54}
             sx={{
-              color: params.pathname === "/profile" ? "white" : "black",
+              color: params.pathname === "/workers" ? "white" : "black",
             }}
           />
         </IconButton>

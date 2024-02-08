@@ -5,7 +5,7 @@ import DashHome from "./DashHome";
 const Home = () => {
   return (
     <>
-      <Box padding={"20px"}>
+      <Box>
         <DashHome />
       </Box>
     </>
