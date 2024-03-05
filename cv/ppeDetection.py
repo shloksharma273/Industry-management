@@ -56,6 +56,7 @@ while True:
     resultsTracker=tracker.update(detections)
 
     for result in resultsTracker:
+        
         x1,y1,x2,y2,id=result
         x1,y1,x2,y2= int(x1),int(y1),int(x2),int(y2)
 
